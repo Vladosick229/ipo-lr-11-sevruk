@@ -1,5 +1,4 @@
-from transport import functions
-from functions import Client,Vehicle, Airplane, Van,TransportCompany
+from transport import Client,Vehicle,TransportCompany,Van,Airplane 
 
 def menu():
     company = TransportCompany("TransCo")

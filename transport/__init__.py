@@ -1,1 +1,3 @@
-from .functions import Client,Vehicle, Airplane, Van,TransportCompany
+from .client import Client
+from .vehicle import Vehicle,Van,Airplane
+from .company import TransportCompany
