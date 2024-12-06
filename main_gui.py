@@ -45,19 +45,21 @@ class TransportCompany:
                     break
 
 # Глобальные переменные для хранения данных
-company = TransportCompany("Моя Транспортная Компания")
+company = TransportCompany("My transport company")
 
 # Функции для обновления таблиц
 def update_clients_table():
     dpg.delete_item("clients_table", children_only=True)
     for client in company.clients:
-        dpg.add_table_row(parent="clients_table", label=client.name, 
+        dpg.add_table_row(parent="clients_table", 
+                          label=client.name,
                           contents=[client.name, str(client.cargo_weight), "Да" if client.is_vip else "Нет"])
 
 def update_vehicles_table():
     dpg.delete_item("vehicles_table", children_only=True)
     for vehicle in company.vehicles:
-        dpg.add_table_row(parent="vehicles_table", label=f"vehicle_{vehicle.vehicle_id}", 
+        dpg.add_table_row(parent="vehicles_table",
+                          label=f"vehicle_{vehicle.vehicle_id}", 
                           contents=[str(vehicle.vehicle_id), str(vehicle.capacity), str(vehicle.current_load)])
 
 def show_client_form():
@@ -124,13 +126,12 @@ def export_results():
         json.dump(data, f, ensure_ascii=False, indent=4)
     dpg.set_value("status", "Результаты экспортированы в файл export_results.json")
 
-# Функция для настройки шрифта
 def setup_fonts():
     with dpg.font_registry():
-        # Укажите путь к файлу шрифта
-        default_font = dpg.add_font("C:/Windows/Fonts/Arial.ttf", 20)
-  # Убедитесь, что файл arial.ttf существует
-        dpg.bind_font(default_font)
+        with dpg.font("C:/Windows/Fonts/Arial.ttf", 20) as default_font:
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Default)
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Cyrillic)
+            dpg.bind_font(default_font)
 
 # Главная функция интерфейса
 def main_window():
@@ -158,7 +159,7 @@ def main_window():
 
 # Запуск приложения
 dpg.create_context()
-setup_fonts()  # Устанавливаем шрифт для кириллицы
+setup_fonts()
 main_window()
 dpg.create_viewport(title="Транспортная компания", width=800, height=600)
 dpg.setup_dearpygui()
