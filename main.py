@@ -45,7 +45,7 @@ def menu():
          print("\nРезультат распределения груза:")
          for vehicle in company.vehicles:
             print(vehicle)
-            for client in Vehicle.clients_list:
+            for client in vehicle.clients_list:
                     print(f" - {client.name}: {client.cargo_weight} тонн, VIP: {'да' if client.is_vip else 'нет'}")
     
       elif res=="6":
