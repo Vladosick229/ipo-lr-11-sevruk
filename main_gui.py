@@ -185,8 +185,8 @@ def show_about():
     with dpg.window(label="О программе", modal=True, width=400, height=200, tag="about_window"):
         dpg.add_text("Лабораторная работа номер 12")
         dpg.add_text("Вариант: 4")
-        dpg.add_text("Разработчик: Севрук Владислав Сергеевич")
         dpg.add_text("Группа 81 ТП")
+        dpg.add_text("Разработчик: Севрук Владислав Сергеевич")
         dpg.add_button(label="Закрыть", callback=lambda: dpg.delete_item("about_window"))
 
 # Глобальная переменная для хранения последней нажатой клавиши
