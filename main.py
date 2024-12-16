@@ -22,13 +22,13 @@ def menu():
          
       elif res=="2":
          type_vehicle=input("Выберите вид транспорта(1-самолет,2-фургон):")
-         capacity=float(input("Введите грузоподъёмность: "))
+         capacity=input("Введите грузоподъёмность: ")
          if type_vehicle=="1":
             altitude=input("Введите максимальную высоту полета:")
-            company.add_vehicle(Airplane(capacity,altitude))
+            company.add_vehicle(Airplane(int(capacity),int(altitude)))
          elif type_vehicle=="2":
             is_refrigerated=input("Есть холодильник?(Да/Нет):").strip().lower()=='да'
-            company.add_vehicle(Van(capacity,is_refrigerated))
+            company.add_vehicle(Van(int(capacity),is_refrigerated))
          else:
             print("Введен неправильный тип транспорта")
 
